@@ -1,4 +1,5 @@
 
+本文内容是对廖雪峰老师[Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)做的笔记,外加一些自己的学习心得,还抱着学以致用的心态来实践一番  
 * [Git学习笔记](#git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0)
   * [Git简介](#git%E7%AE%80%E4%BB%8B)
     * [安装Git](#%E5%AE%89%E8%A3%85git)
@@ -37,19 +38,15 @@
       * [Windows下创建\.gitignore文件的常用方法](#windows%E4%B8%8B%E5%88%9B%E5%BB%BAgitignore%E6%96%87%E4%BB%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95)
     * [配置别名](#%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D)
       * [删除别名](#%E5%88%A0%E9%99%A4%E5%88%AB%E5%90%8D)  
-[Git User Manual](https://mirrors.edge.kernel.org/pub/software/scm/git/docs/user-manual.html)  
-[Git - Book](https://git-scm.com/book/zh/v2)
+
 
 # Git学习笔记
-[TOC]
 **分布式版本控制与集中式版本控制的最大区别**
 >集中式的版本控制,本地没有历史记录,完整的仓库只存在服务器上,如果服务器挂了,就全都挂了,而分布式如果github挂了可以重建一个服务器,然后把任何一个人的仓库clone过去
 *一句话总结:分布式版本控制的每个节点都是完整仓库*
 
 * [Git下载地址](https://git-for-windows.github.io/ )
-* GitDesktop下载地址
-
-
+* [Git User Manual](https://mirrors.edge.kernel.org/pub/software/scm/git/docs/user-manual.html)
 * [Git中文手册](https://git-scm.com/book/zh/v2)
 
 
@@ -60,7 +57,7 @@ $ git --help     //不知道怎么办就看帮助呗
 略
 ### 安装Git
 
-下载并安装Git,安装完成后，还需要最后一步设置
+下载并安装Git,安装完成后，还需要最后一步设置  
 `Git Bash`命令行输入：
 ```
 $ git config --global user.name "Your Name"
@@ -112,7 +109,7 @@ $ git add readme.txt
 ```
 $ git commit -m "wrote a readme file"  
 ```
--m后面是本次提交的说明,一次可以提交多个文件
+-m后面是本次提交的说明,一次可以提交多个文件  
 **注意:**`git commit` 指定文件的时候会直接提交**工作区**的文件,不指定文件的时候提交的是**缓存区`stage`的所有文件**
 ```
 $ git commit readme.txt -m "balabala"
@@ -154,12 +151,12 @@ git reset --hard commit_id
     * Git 提供一个命令`git reflog`来记录你的每一次命令,这样就可以找到所有版本的`commit id`  
 ***
 ### 工作区和暂存区
-* **工作区(Working Directory)**
+* **工作区(Working Directory)**  
 你在电脑里能看到的目录
-* **版本库(Repository)**
-工作区有一个隐藏目录`.git`,这个不算工作区,而是Git的版本库.我们可以称它为*Repo*
-*Repo*里存放了很多东西,其中最重要的就是暂存区`stage`(或者叫index),还有Git为我们自动创建的第一个分支(`Branch`)`master`.以及指向`master`的一个指针叫`HEAD`.
-![be97fab329f8b5cc22a51be4e12288ba.png](en-resource://database/16821:1)
+* **版本库(Repository)**  
+工作区有一个隐藏目录`.git`,这个不算工作区,而是Git的版本库.我们可以称它为*Repo*  
+*Repo*里存放了很多东西,其中最重要的就是暂存区`stage`(或者叫index),还有Git为我们自动创建的第一个分支(`Branch`)`master`.以及指向`master`的一个指针叫`HEAD`.  
+![repo.png](img/repo.png)  
 `cat file_name`命令，其功能是显示在工作区、暂存区和分支里同名文档的**最新修改版本的内容**
 
 前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：  
@@ -171,14 +168,9 @@ $ git status
 ```
 
 #### 查看修改内容
-下面是关于 `git diff`的一些使用区别
-```mermaid
-sequenceDiagram
-工作区->>暂存区: git diff
-暂存区->>版本库: git diff --cached
-工作区-->>版本库: git diff HEAD -- file_name
-```
-另外可以使用`git diff commit_id_1 commit_id_2`比较两个不同版本的区别
+下面是关于 `git diff`的一些使用区别  
+![git_diff.png](img/git_diff.png)  
+另外可以使用`git diff commit_id_1 commit_id_2`比较两个不同版本的区别  
 
 `cat file_name`命令，其功能是显示在工作区、暂存区和分支里同名文档的**最新修改版本的内容**
 
@@ -197,20 +189,20 @@ sequenceDiagram
 
 
 ### 文件名里有空格和()的情况
-Git命令（或者所有的shell命令中）中出现括“（）”时系统把它看做一个有特殊意义的命令从而尝试去执行它。
-因此如果文件名中出现括号，系统找不到括号里要执行的命令就会报错。
-我们要让系统忽略括号的特殊意义，方法是用“”双引号把文件名括起来，或者用转义符将括号转义.
-例如文件名为git (1).md
-以下的写法都是可以的:
+Git命令（或者所有的shell命令中）中出现括“（）”时系统把它看做一个有特殊意义的命令从而尝试去执行它。  
+因此如果文件名中出现括号，系统找不到括号里要执行的命令就会报错。  
+我们要让系统忽略括号的特殊意义，方法是用“”双引号把文件名括起来，或者用转义符将括号转义.  
+例如文件名为git (1).md  
+以下的写法都是可以的:  
 `git add "git (1).md"`
 `git add git" "\(1\).md`
 `git add git" (1)".md`
 
 ### 删除文件
-使用`rm file_name`删除本地文件
-使用` git rm file_name`提交删除到暂存区
-使用`git commit -m "balabala"`提交到本地库  
-**注意:** 可以直接使用`git rm file_name`删除本地文件以及提交删除到暂存区,但仅用于暂存区有此本地文件的情况
+使用`rm file_name`删除本地文件  
+使用` git rm file_name`提交删除到暂存区  
+使用`git commit -m "balabala"`提交到本地库    
+**注意:** 可以直接使用`git rm file_name`删除本地文件以及提交删除到暂存区,但仅用于暂存区有此本地文件的情况  
 
 ## 远程仓库
 
@@ -249,12 +241,11 @@ git remote add origin git@server_name:path/repo_name.git
 * 此后，每次本地提交后，只要有必要，就可以使用命令`git push origin master`推送最新修改
 
 >ssh不行是因为你没有设置ssh秘钥  
-1：生成秘钥：`ssh-keygen -t rsa -C "你自己的邮箱" ` 
-(这里不要设置密码，直接按回车就可以，以后更新就不需要密码)
-2：` id_rsa` 这个文件是你的私钥、`id_rsa.pub`是你的公共密钥，用记事本打开文件`id_rsa.pub`,把里面的内容复制到github配置ssh
-3：添加私秘钥到ssh: `ssh-add id_rsa`（如果添加失败可以先执行命令`ssh-agent bash`,然后再次添加私秘钥。）
-4: 用`ssh -T git@github.com` 判断是否绑定成功。如果返回successfully 表示成功
-
+1：生成秘钥：`ssh-keygen -t rsa -C "你自己的邮箱" `  
+(这里不要设置密码，直接按回车就可以，以后更新就不需要密码)  
+2：` id_rsa` 这个文件是你的私钥、`id_rsa.pub`是你的公共密钥，用记事本打开文件`id_rsa.pub`,把里面的内容复制到github配置ssh  
+3：添加私秘钥到ssh: `ssh-add id_rsa`（如果添加失败可以先执行命令`ssh-agent bash`,然后再次添加私秘钥。）  
+4: 用`ssh -T git@github.com` 判断是否绑定成功。如果返回successfully 表示成功  
 ### 从远程库克隆
 
 * 要克隆一个仓库，首先必须知道仓库的地址，然后使用`git clone`命令克隆。
@@ -291,12 +282,12 @@ git clone git@github.com:HuChanghong/MarkdownStudy.git
 * 解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。
 * 用git log --graph命令可以看到分支合并图。
 
->`git merge branch_name`提示 `conflict`
->`git status`查看冲突的文件
->打开这个文件,修改保存
->用带参数的git log也可以看到分支的合并情况：
->`git log --graph --pretty=oneline --abbrev-commit`
->最后删除不需要的分支
+>`git merge branch_name`提示 `conflict`  
+>`git status`查看冲突的文件  
+>打开这个文件,修改保存  
+>用带参数的git log也可以看到分支的合并情况：  
+>`git log --graph --pretty=oneline --abbrev-commit`  
+>最后删除不需要的分支  
 
 ### 分支管理策略
 
@@ -358,9 +349,9 @@ git stash
 >从不对已推送至别处的提交执行`rebase`操作
 
 
-[gitbook.liuhui998](http://gitbook.liuhui998.com/4_2.html)下图来自这篇链接
-![d215c76a3e4a30e59583803983b3eca1.png](en-resource://database/16848:1)
-![54ecb0a1cabd9e8b32e3e0dad49c5c8c.png](en-resource://database/16850:1)
+[gitbook.liuhui998](http://gitbook.liuhui998.com/4_2.html)下图来自这篇链接    
+![git_merge.png](img/git_merge.png)  
+![git_rebase.png](img/git_rebase.png)  
 >`git rebase`会把你的`my work`分支里的每个提交`commit`取消掉，并且把它们临时 保存为补丁`patch`(这些补丁放到".git/rebase"目录中),然后把`mywork`分支更新 到最新的`origin`分支，最后把保存的这些补丁应用到`mywork`分支上。
 
 >当`mywork`分支更新之后，它会指向这些新创建的提交`commit`,而那些老的提交会被丢弃。 如果运行垃圾收集命令`pruning garbage collection`, 这些被丢弃的提交就会删除. 
