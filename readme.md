@@ -36,8 +36,8 @@
     * [忽略特殊文件](#%E5%BF%BD%E7%95%A5%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6)
       * [Windows下创建\.gitignore文件的常用方法](#windows%E4%B8%8B%E5%88%9B%E5%BB%BAgitignore%E6%96%87%E4%BB%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95)
     * [配置别名](#%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D)
-      * [删除别名](#%E5%88%A0%E9%99%A4%E5%88%AB%E5%90%8D)
-[Git User Manual](https://mirrors.edge.kernel.org/pub/software/scm/git/docs/user-manual.html)
+      * [删除别名](#%E5%88%A0%E9%99%A4%E5%88%AB%E5%90%8D)  
+[Git User Manual](https://mirrors.edge.kernel.org/pub/software/scm/git/docs/user-manual.html)  
 [Git - Book](https://git-scm.com/book/zh/v2)
 
 # Git学习笔记
