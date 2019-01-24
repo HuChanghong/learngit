@@ -1,7 +1,15 @@
+<!-- MarkdownTOC autolink="true" autoanchor="true" -->
+
+- [warning](#warning)
+	- [warning: LF will be replaced by CRLF](#warning-lf-will-be-replaced-by-crlf)
+
+<!-- /MarkdownTOC -->
 这里用来记录一些使用Git时遇到的问题;  
 因为百度和谷歌能完全解决,所以这里只是记录一下要点,不做详述;  
 
+<a id="warning"></a>
 ## warning
+<a id="warning-lf-will-be-replaced-by-crlf"></a>
 ### warning: LF will be replaced by CRLF
 1. #提交时转换为LF，检出时转换为CRLF  
 `$ git config --global core.autocrlf true` 适用于Window
