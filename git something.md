@@ -2,6 +2,8 @@
 
 - [warning](#warning)
 	- [warning: LF will be replaced by CRLF](#warning-lf-will-be-replaced-by-crlf)
+- [error](#error)
+	- [error: failed to push some refs to](#error-failed-to-push-some-refs-to)
 
 <!-- /MarkdownTOC -->
 这里用来记录一些使用Git时遇到的问题;  
@@ -35,3 +37,13 @@
 |MAC/LINUX/UNIX|LF|
   
 >早期的MAC OS是CR,后来的OS X在更换内核后和UNIX一样也是LF
+
+<a id="error"></a>
+## error
+<a id="error-failed-to-push-some-refs-to"></a>
+### error: failed to push some refs to
+
+`git pull --rebase origin master`  
+>先取消commit记录，并且把它们临时保存为补丁(patch)(这些补丁放到”.git/rebase”目录中)，之后同步远程库到本地，最后合并补丁到本地库之中。  
+
+~git push origin master`
