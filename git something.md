@@ -3,19 +3,19 @@
 
 ## warning
 ### warning: LF will be replaced by CRLF
-1. #提交时转换为LF，检出时转换为CRLF
+1. #提交时转换为LF，检出时转换为CRLF  
 `$ git config --global core.autocrlf true` 适用于Window
-2. #提交时转换为LF，检出时不转换
+2. #提交时转换为LF，检出时不转换  
 `$ git config --global core.autocrlf input`适用于MAC/Linux
-3. #提交检出均不转换
+3. #提交检出均不转换  
 `$ git config --global core.autocrlf false`仅用于Window
-4. #在文件提交时进行safecrlf检查
-* #拒绝提交包含混合换行符的文件
-`git config --global core.safecrlf true` 
-* #允许提交包含混合换行符的文件
-`git config --global core.safecrlf false`
-* #提交包含混合换行符的文件时给出警告
-`git config --global core.safecrlf warn`
+4. #在文件提交时进行safecrlf检查  
+	* #拒绝提交包含混合换行符的文件  
+	`git config --global core.safecrlf true` 
+	* #允许提交包含混合换行符的文件  
+	`git config --global core.safecrlf false`
+	* #提交包含混合换行符的文件时给出警告  
+	`git config --global core.safecrlf warn`
 
 关于换行符  
 \r == CR == Carriage Return (回车return)  
