@@ -46,4 +46,4 @@
 `git pull --rebase origin master`  
 >先取消commit记录，并且把它们临时保存为补丁(patch)(这些补丁放到”.git/rebase”目录中)，之后同步远程库到本地，最后合并补丁到本地库之中。  
 
-~git push origin master`
+`git push origin master`
